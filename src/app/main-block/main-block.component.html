@@ -1,0 +1,5 @@
+<!--search-->
+<app-search (onsearch)='changeSearch($event)'></app-search>
+
+<!--table-->
+<app-table [searchedKey]='enterSearchKey' (onHover)='setHover($event)'></app-table>

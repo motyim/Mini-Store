@@ -1,0 +1,6 @@
+<!--thumbnail block-->
+<app-thumbnail *ngIf='hoverItemId;else info ' [hoverItemId]='hoverItemId'></app-thumbnail>
+<ng-template #info>
+    <!--info block-->
+    <app-info-block></app-info-block>
+</ng-template>
