@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { product } from './interfaces/product';
+import {TotalService} from "./total.service";
+
 @Injectable()
 export class ProductService {
 
-  // TODO: read this value from webservice  
+  // TODO: read this value from webservice
   // table data
   private products: product[] = [
     {
@@ -56,14 +58,17 @@ export class ProductService {
     }
   ];
 
-  public total : number = 0 ;
-  // return array of products 
+
+
+  constructor(private totalService:TotalService){
+  }
+  // return array of products
   getProducts(): product[] {
     return this.products;
   }
 
   /**
-   * return product by id 
+   * return product by id
    * @param id of product to get
    */
   getProduct(id: number): product {
@@ -71,16 +76,15 @@ export class ProductService {
   }
 
   /**
-   * calculate total price of added items 
+   * calculate total price of added items
    */
-  calculateTotal():number{
+  calculateTotal(){
     let total : number = 0 ;
-     
+
     this.products
         .filter(p => p.status == true )   //find all add item
-        .forEach(p=> total += p.price);   //loop on them to cal total 
-    this.total = total ; 
-    return total ;
+        .forEach(p=> total += p.price);   //loop on them to cal total
+    this.totalService.changeTotal(total);
   }
 
   /**
@@ -88,13 +92,13 @@ export class ProductService {
    * @param id of product
    */
   add(id: number): void {
-    this.getProduct(id).status = true ; 
-    this.calculateTotal(); 
+    this.getProduct(id).status = true ;
+    this.calculateTotal();
   }
 
   /**
    * remove product from cart
-   * @param id 
+   * @param id
    */
   remove(id:number) : void {
     this.getProduct(id).status = false ;

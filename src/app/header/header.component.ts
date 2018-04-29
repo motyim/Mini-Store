@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductService } from "../product.service";
+import { TotalService } from '../total.service';
+
 
 @Component({
   selector: 'app-header',
@@ -8,15 +9,12 @@ import { ProductService } from "../product.service";
 })
 export class HeaderComponent implements OnInit {
 
-  total : number ; 
-  constructor(private productService:ProductService) { }
+  total : number =0  ;
+  constructor(private totalService: TotalService) { }
 
   ngOnInit() {
-    this.total = this.productService.total;
+    this.totalService.currentTotal.subscribe(t=>this.total=t);
   }
 
-  ngOnChange(){
-this.total = this.productService.total;
-  }
-   
+
 }
