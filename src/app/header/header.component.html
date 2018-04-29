@@ -2,8 +2,8 @@
   <div class="container">
     <a class="navbar-brand" href="#">Mini Store</a>
     <ul class="nav navbar-nav">
-      <li><a href="#">Products</a></li>
-      <li><a href="#">Offers</a></li>
+      <li><a [routerLink]="['/products']" >Products</a></li>
+      <li><a [routerLink]="['/contact']" >Contact</a></li>
     </ul>
     <div class="pull-right total">Total ( {{total | currency:'USD':true:'1.2-2'}}  ) </div>
   </div>

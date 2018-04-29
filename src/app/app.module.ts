@@ -2,6 +2,8 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
+import {RoutingModule} from './routing/routing.module';
+
 
 import {AppComponent} from './app.component';
 import {HeaderComponent} from './header/header.component';
@@ -18,6 +20,8 @@ import {FilterPipe} from './filter.pipe';
 
 import {ProductService} from './product.service';
 import {TotalService} from './total.service';
+import { ProductsComponent } from './products/products.component';
+import { ContactComponent } from './contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -32,11 +36,14 @@ import {TotalService} from './total.service';
     SideBlockComponent,
     AutoGrowDirective,
     FilterPipe,
+    ProductsComponent,
+    ContactComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    RoutingModule
   ],
   providers: [ProductService, TotalService],    // to be singleton to all componenet
   bootstrap: [AppComponent]
